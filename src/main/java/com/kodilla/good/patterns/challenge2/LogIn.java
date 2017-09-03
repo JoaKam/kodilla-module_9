@@ -35,9 +35,10 @@ public class LogIn {
             final String email = keyboard.nextLine();
 
             System.out.println("Account created: ");
-            System.out.println(thisBuyer);
             thisBuyer = new Buyer(nick, name, phoneNumber, email);
-        }else{
+            System.out.println(thisBuyer);
+
+        } else {
             System.out.println("You have been successfully logged in.");
             System.out.println(thisBuyer);
         }
