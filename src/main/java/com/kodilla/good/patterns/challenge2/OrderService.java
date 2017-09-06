@@ -4,9 +4,9 @@ import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Scanner;
 
-public class CreateOrder {
+public class OrderService {
 
-    public String getProductName() {
+    public String provideProductName() {
 
         Scanner keyboard = new Scanner(System.in);
 
@@ -15,11 +15,11 @@ public class CreateOrder {
         return product;
     }
 
-    public Product getProduct() {
+    public Product provideProduct() {
 
-        String product = getProductName();
+        String product = provideProductName();
         Product thisProduct;
-        HashMap<String, Product> productsMap = Product.generateProductsMap();
+        HashMap<String, Product> productsMap = ProductsUtility.generateProductsMap();
 
         thisProduct = productsMap.get(product);
 
@@ -39,14 +39,14 @@ public class CreateOrder {
 
     }
 
-    public int getQuantity(Product thisProduct) {
+    public int provideQuantity(Product thisProduct) {
         Scanner keyboard = new Scanner(System.in);
         final int productAvailableQuantity = thisProduct.getQuantity();
 
         System.out.println("Enter the quantity of products to order:");
         int orderQuantity = keyboard.nextInt();
 
-        if (orderQuantity > productAvailableQuantity) {
+        while (orderQuantity > productAvailableQuantity) {
             System.out.println("Selected quantity unavailable. Please, select the number not greater than " + productAvailableQuantity + " or type 0 to exit an order.");
             orderQuantity = keyboard.nextInt();
 
@@ -55,10 +55,6 @@ public class CreateOrder {
                 System.exit(0);
             }
 
-            if (orderQuantity > productAvailableQuantity) {
-                System.out.println("Selected quantity unavailable. Order cancelled.");
-                System.exit(0);
-            }
         }
 
         return orderQuantity;
@@ -66,8 +62,8 @@ public class CreateOrder {
 
     public Order createOrder(Buyer buyer) {
 
-        Product orderedProduct = getProduct();
-        int productQuantity = getQuantity(orderedProduct);
+        Product orderedProduct = provideProduct();
+        int productQuantity = provideQuantity(orderedProduct);
         LocalDate date = LocalDate.now();
 
         Order createdOrder = new Order(buyer, orderedProduct, productQuantity, date);

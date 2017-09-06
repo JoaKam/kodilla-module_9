@@ -4,11 +4,9 @@ public class App {
     public static void main(String[] args) {
 
         LogIn log = new LogIn();
-        CreateOrder newOrder = new CreateOrder();
+        OrderService newOrder = new OrderService();
 
-        Buyer thisBuyer = log.returnBuyer();
-        Order thisOrder = newOrder.createOrder(thisBuyer);
-        OrderConfirmation newConfirmation = new OrderConfirmation(thisOrder);
-        newConfirmation.confirmOrder();
+        OrderProcessor newOrderProcessor = new OrderProcessor(log, newOrder);
+        newOrderProcessor.process();
     }
 }

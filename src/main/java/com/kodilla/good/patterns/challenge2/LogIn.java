@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class LogIn {
 
-    public String getNick() {
+    public String provideNick() {
 
         Scanner keyboard = new Scanner(System.in);
 
@@ -14,11 +14,11 @@ public class LogIn {
         return nick;
     }
 
-    public Buyer returnBuyer() {
+    public Buyer generateBuyer() {
 
-        String nick = getNick();
+        String nick = provideNick();
         Buyer thisBuyer;
-        HashMap<String, Buyer> buyersMap = Buyer.generateBuyersMap();
+        HashMap<String, Buyer> buyersMap = BuyersUtility.generateBuyersMap();
 
         thisBuyer = buyersMap.get(nick);
 

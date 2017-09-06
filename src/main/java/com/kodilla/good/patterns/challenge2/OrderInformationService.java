@@ -1,10 +1,10 @@
 package com.kodilla.good.patterns.challenge2;
 
-public class OrderConfirmation {
+public class OrderInformationService {
 
     Order order;
 
-    public OrderConfirmation(Order order) {
+    public OrderInformationService(Order order) {
         this.order = order;
     }
 

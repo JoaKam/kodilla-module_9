@@ -4,10 +4,10 @@ import java.time.LocalDate;
 
 public class Order {
 
-    Buyer buyer;
-    Product product;
-    int quantity;
-    LocalDate date;
+    private Buyer buyer;
+    private Product product;
+    private int quantity;
+    private LocalDate date;
 
     public Order(final Buyer buyer, final Product product, final int quantity, final LocalDate date) {
         this.buyer = buyer;
