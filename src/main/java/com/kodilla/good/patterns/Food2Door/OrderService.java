@@ -18,8 +18,6 @@ public class OrderService {
 
         switch (sellerNumber) {
 
-            case 0:
-                return null;
             case 1:
                 return new ExtraFoodShop();
             case 2:
@@ -27,7 +25,9 @@ public class OrderService {
             case 3:
                 return new HealthyShop();
             default:
-                return null;
+                System.out.println("The order has been cancelled.");
+                System.exit(0);
+                break;
         }
 
     }
@@ -75,7 +75,8 @@ public class OrderService {
             orderQuantity = keyboard.nextInt();
 
             if (orderQuantity == 0) {
-                return null;
+                System.out.println("The order has been cancelled.");
+                System.exit(0);
             }
 
         }

@@ -22,8 +22,8 @@ public class SellerUtility {
 
         productsMap.put("apple", new Product("apple", 2, 9));
         productsMap.put("banana", new Product("banana", 3, 8));
-        productsMap.put("milk", new Product("orange", 1, 7));
-        productsMap.put("bread", new Product("pineapple", 2, 6));
+        productsMap.put("milk", new Product("milk", 1, 7));
+        productsMap.put("bread", new Product("bread", 2, 6));
 
         return productsMap;
     }
@@ -34,8 +34,8 @@ public class SellerUtility {
 
         productsMap.put("apple", new Product("apple", 8, 1));
         productsMap.put("banana", new Product("banana", 7, 2));
-        productsMap.put("corn", new Product("orange", 6, 7));
-        productsMap.put("coca-cola", new Product("pineapple", 10, 8));
+        productsMap.put("corn", new Product("corn", 6, 7));
+        productsMap.put("coca-cola", new Product("coca-cola", 10, 8));
 
         return productsMap;
     }

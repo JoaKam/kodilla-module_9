@@ -2,15 +2,15 @@ package com.kodilla.good.patterns.Food2Door;
 
 import java.util.HashMap;
 
-public interface Seller{
+public interface Seller {
 
     HashMap<String, Product> generateProductsMap();
 
-    default boolean validateOrder(Product orderedProduct){
+    default boolean validateOrder(Product orderedProduct) {
 
-        if(orderedProduct == null){
+        if (orderedProduct == null) {
             return false;
-        }else{
+        } else {
             return true;
         }
     }
