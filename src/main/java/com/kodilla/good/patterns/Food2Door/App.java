@@ -6,17 +6,16 @@ public class App {
 
     public static void main(String[] args) {
 
-        Seller seller = OrderService.SelectSeller();
+        Seller seller = OrderService.selectSeller();
 
         HashMap<String, Product> sellerProductsMap = seller.generateProductsMap();
         Product selectedProduct = OrderService.provideProduct(sellerProductsMap);
-        Boolean validateOder = seller.validateOrder(selectedProduct);
 
-        if (validateOder == true) {
+        try {
             Integer selectedQuantity = OrderService.provideQuantity(selectedProduct);
             seller.process(selectedProduct, selectedQuantity);
             System.out.println("The order has been successfully completed.");
-        } else {
+        } catch (NullPointerException e) {
             System.out.println("The order has been cancelled.");
         }
 

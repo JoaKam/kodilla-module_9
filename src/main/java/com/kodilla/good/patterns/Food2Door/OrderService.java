@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class OrderService {
 
-    public static Seller SelectSeller() {
+    public static Seller selectSeller() {
 
         int sellerNumber = 4;
 
@@ -26,8 +26,7 @@ public class OrderService {
                 return new HealthyShop();
             default:
                 System.out.println("The order has been cancelled.");
-                System.exit(0);
-                break;
+                return null;
         }
 
     }
@@ -76,7 +75,7 @@ public class OrderService {
 
             if (orderQuantity == 0) {
                 System.out.println("The order has been cancelled.");
-                System.exit(0);
+                return null;
             }
 
         }

@@ -11,7 +11,7 @@ public class OrderProcessor {
     }
 
     public void process() {
-        Buyer thisBuyer = log.returnBuyer();
+        Buyer thisBuyer = log.generateBuyer();
         Order thisOrder = newOrder.createOrder(thisBuyer);
         OrderInformationService newConfirmation = new OrderInformationService(thisOrder);
         newConfirmation.confirmOrder();
