@@ -7,42 +7,42 @@ import java.util.stream.Collectors;
 
 public class FlightSearchProcessor {
 
-    public static int selectSearchType() {
+    public static String selectSearchType() {
 
-        int searchType = 5;
+        String searchType = null;
 
-        while (searchType > 4) {
+        while (searchType == null) {
 
             Scanner keyboard = new Scanner(System.in);
             System.out.println("Select the search type:\n [1] Flight from \n [2] Flight to \n [3] Direct flights \n [4] Indirect flights \n [0] EXIT");
-            searchType = keyboard.nextInt();
+            searchType = keyboard.nextLine();
         }
 
         return searchType;
     }
 
-    public static List<String> searchFlight(int searchType) {
+    public static List<String> searchFlight(String searchType) {
 
-        List<Flight> foundFlights = new ArrayList<>();
+        List<Flight> foundFlights;
         List<String> foundFlightsFinal;
         ArrayList<Flight> flightsList = FlightsUtility.createFlightsList();
 
         switch (searchType) {
 
-            case 0:
-                return null;
-            case 1:
+            case "Flight from":
                 foundFlights = SearchFlightService.findFlightsFrom(flightsList);
                 break;
-            case 2:
+            case "Flight to":
                 foundFlights = SearchFlightService.findFlightsTo(flightsList);
                 break;
-            case 3:
+            case "Direct flights":
                 foundFlights = SearchFlightService.findDirectFlights(flightsList);
                 break;
-            case 4:
+            case "Indirect flights":
                 foundFlightsFinal = SearchFlightService.findIndirectFlights(flightsList);
                 return foundFlightsFinal;
+            default:
+                return null;
         }
 
         foundFlightsFinal = foundFlights.stream()

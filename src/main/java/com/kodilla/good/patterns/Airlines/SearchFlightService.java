@@ -10,11 +10,18 @@ public class SearchFlightService {
     public SearchFlightService() {
     }
 
-    public static List<Flight> findFlightsFrom(final ArrayList<Flight> flightsList) {
+    private static String provideAirport(String type) {
 
         Scanner keyboard = new Scanner(System.in);
-        System.out.println("Please, enter the departure airport:");
-        final String departureCity = keyboard.nextLine();
+        System.out.println("Please, enter the " + type + " airport:");
+        final String airport = keyboard.nextLine();
+
+        return airport;
+    }
+
+    public static List<Flight> findFlightsFrom(final ArrayList<Flight> flightsList) {
+
+        final String departureCity = provideAirport("departure");
 
         List<Flight> foundFlightsList = flightsList.stream()
                 .filter(f -> f.getDepartureAirport().equals(departureCity))
@@ -26,9 +33,7 @@ public class SearchFlightService {
 
     public static List<Flight> findFlightsTo(final ArrayList<Flight> flightsList) {
 
-        Scanner keyboard = new Scanner(System.in);
-        System.out.println("Please, enter the destination airport:");
-        final String destinationCity = keyboard.nextLine();
+        final String destinationCity = provideAirport("destination");
 
         List<Flight> foundFlightsList = flightsList.stream()
                 .filter(f -> f.getArrivalAirport().equals(destinationCity))
@@ -39,11 +44,8 @@ public class SearchFlightService {
 
     public static List<Flight> findDirectFlights(final ArrayList<Flight> flightsList) {
 
-        Scanner keyboard = new Scanner(System.in);
-        System.out.println("Please, enter the departure airport:");
-        final String departureCity = keyboard.nextLine();
-        System.out.println("Please, enter the destination airport:");
-        final String destinationCity = keyboard.nextLine();
+        final String departureCity = provideAirport("departure");
+        final String destinationCity = provideAirport("destination");
 
         Flight searchedFlight = new Flight(departureCity, destinationCity);
 
